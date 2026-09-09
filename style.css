@@ -20,12 +20,35 @@ body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
-  background:
-    radial-gradient(circle at 15% 10%, rgba(0,217,255,.10), transparent 28%),
-    radial-gradient(circle at 85% 55%, rgba(0,240,168,.06), transparent 25%),
-    linear-gradient(135deg, #090d10, #0b1114 55%, #070a0c);
+  background: #090d10;
   line-height: 1.7;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0,217,255,.12), transparent 25%),
+    radial-gradient(circle at 85% 70%, rgba(0,240,168,.09), transparent 25%),
+    radial-gradient(circle at 50% 45%, rgba(0,217,255,.035), transparent 35%);
+  animation: backgroundFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundFloat {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, 2%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-1%, 3%, 0) scale(1.02);
+  }
 }
 
 a { color: inherit; text-decoration: none; }
@@ -51,9 +74,9 @@ img { max-width: 100%; display: block; }
 }
 
 .nav {
-  max-width: var(--max);
+  width: fit-content;
   margin: auto;
-  padding: 10px 12px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -140,8 +163,8 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-image-section img {
-  width: 170px;
-  height: 225px;
+  width: 280px;
+  height: 340px;
   object-fit: cover;
   object-position: center top;
   border-radius: 16px;
@@ -227,20 +250,14 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  opacity: .12;
+  display: none;
 }
 
 .glow-one { background: var(--accent); top: 10%; left: -250px; }
 .glow-two { background: var(--accent-2); bottom: -200px; right: -200px; }
 
 .alt-section {
-  background: rgba(255,255,255,.018);
+  background: transparent;
   border-top: 1px solid rgba(255,255,255,.035);
   border-bottom: 1px solid rgba(255,255,255,.035);
 }
@@ -622,7 +639,7 @@ footer span { color: var(--accent); }
   .site-header { top: 10px; padding: 0 12px; }
 
   .nav {
-    border-radius: 16px;
+    border-radius: 999px;
     justify-content: space-between;
   }
 
@@ -711,5 +728,9 @@ footer span { color: var(--accent); }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
+  }
+
+  body::before {
+    animation: none;
   }
 }
