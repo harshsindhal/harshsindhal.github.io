@@ -1,0 +1,77 @@
+.cover{
+  text-align: center;
+  font-size: 500%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+.about{
+  font-weight: bold;
+  font-size: 480%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 0px;
+
+}
+.project{
+  font-weight: bold;
+  font-size: 480%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin-bottom: 50px;
+  margin-top: 0px;
+ 
+}
+.education{
+  font-weight: bold;
+  font-size: 480%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  margin-bottom: 50px;
+  margin-top: 70px;
+  margin-left: 50px;
+}
+
+.list{
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-weight: bold;
+}
+.column {
+  flex: 1; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column li {
+  margin-bottom: 10px;
+}
+
+
+.about_div{
+  display: flex;
+  flex-direction: row;
+  margin-bottom:700px;
+  margin-top:700px;
+}
+.skills_div{
+  display:flex;
+  flex-direction: column;
+}
+
+
+.project_div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:700px;
+  margin-top:700px;
+}
+
+.project_details {
+  text-align: left; 
+  width: 100%; 
+}
+

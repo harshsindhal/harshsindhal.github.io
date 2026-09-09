@@ -1,0 +1,56 @@
+/* Container for perspective */
+.hero-right {
+  perspective: 1000px; /* gives 3D depth */
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 220px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #00d9ff;
+  box-shadow: 0 0 5px #00d9ff, 0 0 10px #00d9ff, 0 0 15px #00aacc;
+  object-position: center;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+/* Optional: subtle scale on hover */
+.profile-pic:hover {
+  box-shadow: 0 0 8px #00d9ff, 0 0 16px #00d9ff, 0 0 24px #00aacc;
+}
+
+.image{
+  border-radius:20%;
+  margin-right: 50px;
+  margin-left: 50px;
+  width: 500px;
+  height: 300px;
+  
+  
+}
+.second_image,.third_image{
+
+  margin-left: 50px;
+  width: 93%;
+  height: 500px;
+  margin-top: 80px;
+  z-index: 1;
+  border-radius: 25px;
+}
+.third_image{
+  margin-right: 200px;
+  margin-left: 20px;
+  width: 90%;
+  height: 450px;
+  border-radius: 15px;
+  margin-top: 0px;
+}
+.image_fourth {
+ width: 50px;
+ height: 50px;
+ margin: 0 30px;/* margin: 0 30px; is shorthand for:margin-top: 0;margin-right: 10px;margin-bottom: 0;margin-left: 10px; */
+}
+.flex-container {
+display: flex;
+}

@@ -1,0 +1,13 @@
+.background {
+  background-color: rgb(36, 32, 32);
+  margin: 0;
+  padding: 0;
+
+  /* subtle grid overlay */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px; /* controls grid spacing */
+  background-attachment: fixed; /* makes grid stay still while scrolling */
+  background-blend-mode: overlay; /* merges softly with base color */
+}
