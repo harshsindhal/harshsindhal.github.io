@@ -140,8 +140,8 @@ img { max-width: 100%; display: block; }
 }
 
 .hero-image-section img {
-  width: 150px;
-  height: 200px;
+  width: 170px;
+  height: 225px;
   object-fit: cover;
   object-position: center top;
   border-radius: 16px;
