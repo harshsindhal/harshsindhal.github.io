@@ -42,23 +42,25 @@
       <div class="hero-glow glow-two"></div>
 
       <div class="hero-content reveal">
-        <div class="hero-photo-wrap">
-          <img src="images/passport.jpg" alt="Harsh Sindhal">
+        <div class="hero-image-section">
+          <img src="images/passport.jpg" alt="Harsh Sindhal" class="profile-3d" draggable="false">
         </div>
 
-        <p class="eyebrow">HELLO, I'M</p>
-        <h1>Harsh <span>Sindhal</span></h1>
-        <h2>Not just learning AI — building with it.</h2>
+        <div class="hero-text-content">
+          <p class="eyebrow">HELLO, I'M</p>
+          <h1>Harsh <span>Sindhal</span></h1>
+          <h2>Not just learning AI — building with it.</h2>
 
-        <p class="hero-text">
-          Computer Science Engineering graduate focused on software development,
-          data analytics, and AI. I enjoy building practical solutions, learning
-          new technologies, and growing through real-world challenges.
-        </p>
+          <p class="hero-text">
+            Computer Science Engineering graduate focused on software development,
+            data analytics, and AI. I enjoy building practical solutions, learning
+            new technologies, and growing through real-world challenges.
+          </p>
 
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">View My Work</a>
-          <a class="button secondary" href="#contact">Get In Touch</a>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">View My Work</a>
+            <a class="button secondary" href="#contact">Get In Touch</a>
+          </div>
         </div>
       </div>
     </section>
@@ -433,6 +435,30 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    // Subtle 3D cursor tilt for the profile photo.
+    const profileImage = document.querySelector(".profile-3d");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (profileImage && !reduceMotion) {
+      profileImage.addEventListener("mousemove", (event) => {
+        const rect = profileImage.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 9;
+        const rotateX = ((rect.height / 2 - y) / (rect.height / 2)) * 9;
+
+        profileImage.style.transform =
+          `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`;
+        profileImage.style.setProperty("--shine-x", `${(x / rect.width) * 100}%`);
+        profileImage.style.setProperty("--shine-y", `${(y / rect.height) * 100}%`);
+      });
+
+      profileImage.addEventListener("mouseleave", () => {
+        profileImage.style.transform =
+          "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+      });
+    }
   </script>
 </body>
 </html>
