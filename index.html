@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Harsh Sindhal — Software, Data & AI portfolio">
   <title>Harsh Sindhal | Software • Data • AI</title>
@@ -12,6 +13,7 @@
 </head>
 
 <body>
+  <canvas id="particles"></canvas>
   <div class="progress" id="progress"></div>
 
   <header class="site-header">
@@ -46,7 +48,7 @@
 
         <div class="hero-text-content">
           <p class="eyebrow">HELLO, I'M</p>
-          <h1>Harsh <span>Sindhal</span></h1>
+          <h1>HARSH <span>SINDHAL</span></h1>
           <h2>Not just learning AI — building with it.</h2>
 
           <p class="hero-text">
@@ -469,6 +471,81 @@
       window.addEventListener("mouseleave", () => {
         document.body.classList.remove("cursor-active");
       });
+    }
+
+
+    // Soft firefly-style background particles.
+    const particleCanvas = document.getElementById("particles");
+    const particleCtx = particleCanvas.getContext("2d");
+    let particles = [];
+
+    function resizeParticles() {
+      particleCanvas.width = window.innerWidth;
+      particleCanvas.height = window.innerHeight;
+    }
+
+    function createParticles() {
+      particles = [];
+      const count = Math.min(65, Math.floor(window.innerWidth / 20));
+
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * particleCanvas.width,
+          y: Math.random() * particleCanvas.height,
+          radius: Math.random() * 1.8 + 0.6,
+          speedX: (Math.random() - 0.5) * 0.22,
+          speedY: (Math.random() - 0.5) * 0.22,
+          opacity: Math.random() * 0.35 + 0.15,
+          pulse: Math.random() * Math.PI * 2,
+          pulseSpeed: Math.random() * 0.018 + 0.008
+        });
+      }
+    }
+
+    resizeParticles();
+    createParticles();
+    window.addEventListener("resize", () => {
+      resizeParticles();
+      createParticles();
+    });
+
+    function animateParticles() {
+      particleCtx.clearRect(
+        0,
+        0,
+        particleCanvas.width,
+        particleCanvas.height
+      );
+
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.pulse += p.pulseSpeed;
+
+        const opacity = Math.max(
+          0.05,
+          p.opacity + Math.sin(p.pulse) * 0.12
+        );
+
+        if (p.x < -20) p.x = particleCanvas.width + 20;
+        if (p.x > particleCanvas.width + 20) p.x = -20;
+        if (p.y < -20) p.y = particleCanvas.height + 20;
+        if (p.y > particleCanvas.height + 20) p.y = -20;
+
+        particleCtx.beginPath();
+        particleCtx.shadowBlur = 16;
+        particleCtx.shadowColor = "rgba(29, 143, 95, 0.7)";
+        particleCtx.fillStyle = `rgba(195, 205, 187, ${opacity})`;
+        particleCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        particleCtx.fill();
+        particleCtx.shadowBlur = 0;
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    if (!reduceMotion) {
+      animateParticles();
     }
 
   </script>
