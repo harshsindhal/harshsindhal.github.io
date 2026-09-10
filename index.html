@@ -14,26 +14,24 @@
 <body>
   <div class="progress" id="progress"></div>
 
- <header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-    <div class="nav-links" id="navLinks">
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </div>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-  </nav>
-</header>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
   <main>
     <!-- HOME -->
@@ -357,7 +355,7 @@
         </p>
 
         <div class="contact-links">
-          
+
           <a href="https://www.linkedin.com/in/harsh-sindhal/" target="_blank" rel="noopener">
             <span class="contact-icon">in</span>
             <span><small>LinkedIn</small>linkedin.com/in/harsh-sindhal</span>
@@ -375,7 +373,7 @@
 
           <div class="contact-link static">
             <span class="contact-icon">☎</span>
-            <span><small>Phone</small>9877320337</span>
+            <span><small>Phone</small>+91 9877320337</span>
           </div>
         </div>
       </div>
@@ -383,7 +381,6 @@
   </main>
 
   <footer>
-    <p>Made with <span>♥</span> by Harsh Sindhal</p>
     <p>© <span id="year"></span> Harsh Sindhal</p>
   </footer>
 
@@ -455,6 +452,25 @@
           "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
       });
     }
+    // Cursor-following neon background glow.
+    if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+      let glowFrame;
+
+      window.addEventListener("mousemove", (event) => {
+        cancelAnimationFrame(glowFrame);
+
+        glowFrame = requestAnimationFrame(() => {
+          document.body.style.setProperty("--cursor-x", `${event.clientX}px`);
+          document.body.style.setProperty("--cursor-y", `${event.clientY}px`);
+          document.body.classList.add("cursor-active");
+        });
+      }, { passive: true });
+
+      window.addEventListener("mouseleave", () => {
+        document.body.classList.remove("cursor-active");
+      });
+    }
+
   </script>
 </body>
 </html>
