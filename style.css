@@ -863,69 +863,99 @@ footer span { color: var(--accent); }
   opacity: 1;
   transform: none;
 }
-
-
 @media (max-width: 900px) {
 
   .nav-links a { padding: 8px 7px; font-size: 11px; }
 
   .about-grid {
+
     grid-template-columns: 1fr 1fr;
+
   }
 
   .projects-grid { grid-template-columns: 1fr 1fr; }
 
   .skills-grid { grid-template-columns: 1fr 1fr; }
+
 }
 
 @media (max-width: 700px) {
-  .site-header { top: 10px; padding: 0 12px; }
 
-  .nav {
-    border-radius: 0;
-    justify-content: space-between;
+  .site-header {
+    top: 10px;
+    padding: 0 12px;
   }
 
-  .menu-toggle {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    background: transparent;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    padding: 9px;
-    cursor: pointer;
+.nav {
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  padding: 0;
+  border-radius: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.menu-toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: none;
+  display: flex;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  cursor: pointer;
+  margin: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+}
+.nav-links {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  width: 220px;
+  display: none;
+  padding: 10px;
+  flex-direction: column;
+  background: rgba(8, 12, 15, 0.95);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(18px);
+  box-sizing: border-box;
+  z-index: 1001;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+.nav-links a {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+  .section {
+    padding: 75px 16px;
   }
 
-  .menu-toggle span {
-    display: block;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--text);
+  .hero {
+    min-height: 95vh;
+    padding-top: 110px;
   }
-
-  .nav-links {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    display: none;
-    padding: 10px;
-    flex-direction: column;
-    background: rgba(8,12,15,.95);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    backdrop-filter: blur(18px);
-  }
-
-  .nav-links.open { display: flex; }
-  .nav-links a { width: 100%; text-align: center; padding: 10px; }
-
-  .section { padding: 75px 16px; }
-
-  .hero { min-height: 95vh; padding-top: 110px; }
 
   .hero-content {
     grid-template-columns: 1fr;
@@ -933,15 +963,37 @@ footer span { color: var(--accent); }
     gap: 28px;
   }
 
+  .hero-image-section {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    transform: none;
+  }
+
   .hero-image-section img {
     width: 220px;
     height: 220px;
+    display: block;
+    margin: 0;
   }
 
-  .hero-text-content { text-align: center; }
-  .hero-text-content .eyebrow { text-align: center; }
-  .hero h1 { letter-spacing: -2px; }
-  .hero-text { font-size: 14px; }
+  .hero-text-content {
+    text-align: center;
+  }
+
+  .hero-text-content .eyebrow {
+    text-align: center;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .hero-text {
+    font-size: 14px;
+  }
 
   .hero-actions {
     justify-content: center;
@@ -950,92 +1002,162 @@ footer span { color: var(--accent); }
     margin-inline: auto;
   }
 
-.about-grid,
-.projects-grid,
-.skills-grid,
-.cert-grid,
-.contact-links {
-  grid-template-columns: 1fr;
+  .about-grid,
+  .projects-grid,
+  .skills-grid,
+  .cert-grid,
+  .contact-links {
+    grid-template-columns: 1fr;
+  }
+
+  .education-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 24px;
+  }
+
+  .education-year {
+    font-size: 26px;
+  }
+
+  .education-card:hover {
+    transform: translateX(3px);
+  }
+
+  .timeline-top {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .project-image {
+    height: 200px;
+  }
+
+  .section-heading {
+    margin-bottom: 25px;
+  }
+body::before {
+  animation-name: backgroundFloatMobile;
 }
-.education-card {
-  grid-template-columns: 1fr;
-  gap: 14px;
-  padding: 24px;
+
+@keyframes backgroundFloatMobile {
+  0% { transform: translate3d(-6%, -1%, 0) scale(1); }
+  50% { transform: translate3d(-2%, 2%, 0) scale(1.04); }
+  100% { transform: translate3d(-5%, 3%, 0) scale(1.02); }
+}
+.about-feature {
+  margin-left: 0;
+}
+.contact-section {
+  text-align: left;
 }
 
-.education-year {
-  font-size: 26px;
+.contact-section .section-heading {
+  justify-content: flex-start;
 }
-
-.education-card:hover {
-  transform: translateX(3px);
-}
-
-  .timeline-top { flex-direction: column; gap: 4px; }
-
-  .project-image { height: 200px; }
-
-  .section-heading { margin-bottom: 25px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   html { scroll-behavior: auto; }
+
   *, *::before, *::after {
+
     animation-duration: .01ms !important;
+
     transition-duration: .01ms !important;
+
   }
+
 }
 
 
 /* Cursor-following neon background glow */
+
 body::after {
+
   content: "";
+
   position: fixed;
+
   left: var(--cursor-x, 50%);
+
   top: var(--cursor-y, 50%);
+
   width: 420px;
+
   height: 420px;
+
   transform: translate(-50%, -50%);
+
   border-radius: 50%;
+
   pointer-events: none;
+
   z-index: -1;
+
   background: radial-gradient(
+
     circle,
+
     rgba(0, 217, 255, .13) 0%,
+
     rgba(0, 240, 168, .07) 28%,
+
     rgba(0, 217, 255, .025) 48%,
+
     transparent 72%
+
   );
+
   filter: blur(35px);
+
   opacity: 0;
+
   transition: opacity .45s ease;
+
   will-change: left, top, opacity;
+
 }
 
 body.cursor-active::after {
+
   opacity: 1;
+
 }
 
 @media (pointer: coarse) {
+
   body::after {
+
     display: none;
+
   }
+
 }
 
 /* FIXED SITE WATERMARK */
 
 .site-watermark {
+
   position: fixed;
+
   right: 28px;
+
   bottom: 20px;
+
   z-index: 10;
 
   font-family: "Bebas Neue", sans-serif;
+
   font-size: 70px;
+
   line-height: 1;
 
   color: rgba(195, 205, 187, 0.035);
 
   pointer-events: none;
+
   user-select: none;
+
 }
